@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from "./style.module.scss"
 import { Button, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import storage from '../../utils/storage';
 
 
 const { Title } = Typography;
@@ -29,6 +30,10 @@ export function Welcome():JSX.Element {
             return navigate("/sign_in")
         }, 3000);
     };
+
+    useEffect(() => {
+        if (storage.getToken()) navigate("/home/introduce")
+    }, [navigate]);
 
     return (
         <div className={styles.container}>

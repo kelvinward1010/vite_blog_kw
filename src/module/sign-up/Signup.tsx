@@ -1,13 +1,16 @@
 
-import { Button, Form, Input, Typography } from 'antd';
+import { Button, Form, Input, Typography, notification } from 'antd';
 import styles from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { signupService } from './api/signup';
+import { useEffect } from 'react';
+import storage from '../../utils/storage';
 
 
 const { Title, Text } = Typography;
 
 type FieldType = {
-    username?: string;
+    email?: string;
     password?: string;
     confirmPassword?: string;
 };
@@ -32,12 +35,29 @@ export function Signup() {
 
 
     const onFinish = (values: any) => {
-        console.log('Success:', values);
+        const data = {
+            email: values.email,
+            password: values.password
+        }
+        signupService(data).then(() => {
+            notification.success({
+                message: "You have been signed up successfully!"
+            })
+            navigate('/sign_in')
+        }).catch((res) => {
+            notification.error({
+                message: `Could not sign up. Please try again! ${res?.response?.data?.detail}`,
+            })
+        })
     };
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
+
+    useEffect(() => {
+        if (storage.getToken()) navigate("/home/introduce")
+    }, [navigate]);
 
     return (
         <div className={styles.container}>
@@ -55,8 +75,8 @@ export function Signup() {
                     autoComplete="off"
                 >
                     <Form.Item<FieldType>
-                        label="Username"
-                        name="username"
+                        label="Email"
+                        name="email"
                         rules={[{ required: true, message: 'Please input your username!' }]}
                     >
                         <Input />

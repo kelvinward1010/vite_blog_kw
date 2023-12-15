@@ -1,11 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import { signinUrl, signupUrl } from "./urls";
-import { Error } from "./components/error";
+import { homeUrl, introducedUrl, signinUrl, signupUrl } from "./urls";
 import { 
+    Introduce,
     Signin, 
     Signup, 
     Welcome
 } from "./module";
+import { 
+    Error, 
+    Layout
+} from "./components";
 
 
 
@@ -13,6 +17,17 @@ import {
 
 
 export const routerConfig = createBrowserRouter([
+    {
+        path: homeUrl,
+        element: <Layout />,
+        errorElement: <Error />,
+        children: [
+            {
+                path: introducedUrl,
+                element: <Introduce />
+            }
+        ]
+    },
     {
         path: "/",
         errorElement: <Error />,

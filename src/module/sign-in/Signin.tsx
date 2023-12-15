@@ -1,13 +1,16 @@
 
-import { Button, Form, Input, Typography } from 'antd';
+import { Button, Form, Input, Typography, notification } from 'antd';
 import styles from './style.module.scss'
 import { useNavigate } from 'react-router-dom';
+import { signinService } from './api/signin';
+import storage from '../../utils/storage';
+import { useEffect } from 'react';
 
 
 const { Title, Text } = Typography;
 
 type FieldType = {
-  username?: string;
+  email?: string;
   password?: string;
 };
 
@@ -16,12 +19,33 @@ export function Signin(): JSX.Element {
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    console.log('Success:', values);
+
+    const data = {
+      email: values.email,
+      password: values.password
+    }
+
+    signinService(data).then((res) => {
+
+      storage.setToken(res.access_token)
+      notification.success({
+          message: "You have been sign in successfully!"
+      })
+      navigate('/home/introduce')
+    }).catch((res) => {
+      notification.error({
+          message: `Could not sign in. Please try again! ${res?.response?.data?.detail}`,
+      })
+    })
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
+  useEffect(() => {
+    if (storage.getToken()) navigate("/home/introduce")
+}, [navigate]);
 
   return (
     <div className={styles.container}>
@@ -40,9 +64,9 @@ export function Signin(): JSX.Element {
           autoComplete="off"
         >
           <Form.Item<FieldType>
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+            label="Email"
+            name="email"
+            rules={[{ required: true, message: 'Please input your email!' }]}
           >
             <Input />
           </Form.Item>
