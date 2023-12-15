@@ -6,4 +6,15 @@
     align-items: center;
     background: teal;
     color: white;
+
+    .center{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+
+        .welcome_title{
+            color: white;
+        }
+    }
 }

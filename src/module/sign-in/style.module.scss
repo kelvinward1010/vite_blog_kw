@@ -1,0 +1,45 @@
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: teal;
+    color: white;
+
+    .center{
+        height: 500px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+        border-radius: 5px;
+        background: white;
+
+        .title{
+            margin: -20px 0 40px 0;
+        }
+
+        .button{
+            background: rgb(21, 166, 166);
+            color: white;
+        }
+
+        .button:hover{
+            background: teal;
+            color: white;
+        }
+
+        .have_account{
+
+            .fix_text{
+                color: teal;
+                text-decoration: underline;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}
