@@ -1,0 +1,13 @@
+.container{
+
+    .button{
+        background: white;
+        color: teal;
+        border: 1px solid teal;
+    }
+
+    .button:hover{
+        background: teal;
+        color: white !important;
+    }
+}

@@ -1,5 +1,5 @@
 
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import styles from "./style.module.scss";
 import { useState } from "react";
 
@@ -91,6 +91,12 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
         >
             <Input.Password />
         </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 10, span: 14 }}>
+            <Button className={styles.button} htmlType="submit">
+                Update Profile
+            </Button>
+        </Form.Item>
     </Form>
 );
 
@@ -129,7 +135,7 @@ function Profile(props: Props) {
             <CustomizedForm
                 fields={fields}
                 onChange={(newFields) => {
-                setFields(newFields);
+                    setFields(newFields);
                 }}
                 onFailure={(error: any) => onFinishFailed(error)}
                 onSubmit={(values: any) => onFinish(values)}
