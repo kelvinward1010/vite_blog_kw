@@ -46,6 +46,12 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
         }}
         onFinish={onSubmit}
         onFinishFailed={onFailure}
+        initialValues={{
+            "email": fields.find(value => value?.value != null)?.value,
+            "old_password": "",
+            "new_password": "",
+            "confirm_password": "",
+        }}
     >
         <Form.Item
             name="email"
@@ -98,6 +104,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
             <Button className={styles.button} htmlType="submit">
                 Update Profile
             </Button>
+            <Button className={styles.button_reset} htmlType="reset">Reset</Button>
         </Form.Item>
     </Form>
 );
