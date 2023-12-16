@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { signupService } from './api/signup';
 import { useEffect } from 'react';
 import storage from '../../utils/storage';
+import { CheckCircleOutlined, WarningOutlined } from '@ant-design/icons';
 
 
 const { Title, Text } = Typography;
@@ -41,12 +42,19 @@ export function Signup() {
         }
         signupService(data).then(() => {
             notification.success({
-                message: "You have been signed up successfully!"
+                message: "You have been signed up successfully!",
+                icon: (
+                    <CheckCircleOutlined className="done"/>
+                )
             })
             navigate('/sign_in')
         }).catch((res) => {
             notification.error({
-                message: `Could not sign up. Please try again! ${res?.response?.data?.detail}`,
+                message: `Could not sign up. Please try again!`,
+                description: ` ${res?.response?.data?.detail}`,
+                icon: (
+                    <WarningOutlined className='warning'/>
+                )
             })
         })
     };

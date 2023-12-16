@@ -1,7 +1,9 @@
 
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, notification } from "antd";
 import styles from "./style.module.scss";
 import { useState } from "react";
+import { changeProfileService } from "./api/change_profile";
+import { CheckCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 
 interface Props {
@@ -104,8 +106,8 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
 function Profile(props: Props) {
 
     const [fields, setFields] = useState<FieldData[]>([
-        { 
-            name: ['email'], 
+        {
+            name: ['email'],
             value: props.current_user?.email,
         },
         {
@@ -123,7 +125,28 @@ function Profile(props: Props) {
     ]);
 
     const onFinish = (values: any) => {
-        console.log("Successfully", values)
+        const data = {
+            email: values?.email,
+            old_password: values?.old_password,
+            password: values?.new_password
+        }
+
+        changeProfileService(props.current_user?.id, data).then(() => {
+            notification.success({
+                message: "You have been change your profile successfully!",
+                icon: (
+                    <CheckCircleOutlined className="done"/>
+                )
+            })
+        }).catch((res) => {
+            notification.error({
+                message: `Could not change profile. Please try again!`,
+                description: ` ${res?.response?.data?.detail}`,
+                icon: (
+                    <WarningOutlined className='warning'/>
+                )
+            })
+        })
     }
 
     const onFinishFailed = (errorInfo: any) => {

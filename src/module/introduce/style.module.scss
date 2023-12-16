@@ -1,0 +1,33 @@
+.container{
+    width: 100vw;
+    height: calc((100vh - 55px));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .center{
+
+        height: 400px;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .imgmain{
+            height: 100px;
+            width: 100px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        h2{
+            color: teal;
+        }
+
+        h3{
+            color: teal;
+        }
+    }
+
+}

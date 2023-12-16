@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { signinService } from './api/signin';
 import storage, { storageService } from '../../utils/storage';
 import { useEffect } from 'react';
+import { CheckCircleOutlined, WarningOutlined } from '@ant-design/icons';
 
 
 const { Title, Text } = Typography;
@@ -30,12 +31,19 @@ export function Signin(): JSX.Element {
       storage.setToken(res.access_token)
       storageService.setStorage(JSON.stringify(res));
       notification.success({
-          message: "You have been sign in successfully!"
+          message: "You have been sign in successfully!",
+          icon: (
+            <CheckCircleOutlined className="done"/>
+          )
       })
       navigate('/home/introduce')
     }).catch((res) => {
       notification.error({
-          message: `Could not sign in. Please try again! ${res?.response?.data?.detail}`,
+          message: `Could not sign in. Please try again!`,
+          description: ` ${res?.response?.data?.detail}`,
+          icon: (
+            <WarningOutlined className='warning'/>
+          )
       })
     })
   };

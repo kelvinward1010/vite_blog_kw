@@ -30,3 +30,13 @@
     color: teal;
     border: 1px solid teal;
 }
+
+
+
+.warning{
+    color: red;
+}
+
+.done {
+    color: green;
+}
