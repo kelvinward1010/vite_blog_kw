@@ -24,7 +24,7 @@ const formItemLayout = {
       xs: { span: 24 },
       sm: { span: 14 },
     },
-  };
+};
 
 
 export function Signup() {

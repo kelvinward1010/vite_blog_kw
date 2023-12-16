@@ -1,0 +1,27 @@
+.container{
+    height: 55px;
+    width: 100vw;
+    background: teal;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header_left{
+        margin-left: 10px;
+    }
+
+    .header_right{
+        margin-right: 10px;
+
+        .avatar{
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .nameaccount{
+            color: white;
+        }
+    }
+
+}

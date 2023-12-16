@@ -3,7 +3,7 @@ import { Button, Form, Input, Typography, notification } from 'antd';
 import styles from './style.module.scss'
 import { useNavigate } from 'react-router-dom';
 import { signinService } from './api/signin';
-import storage from '../../utils/storage';
+import storage, { storageService } from '../../utils/storage';
 import { useEffect } from 'react';
 
 
@@ -28,6 +28,7 @@ export function Signin(): JSX.Element {
     signinService(data).then((res) => {
 
       storage.setToken(res.access_token)
+      storageService.setStorage(JSON.stringify(res));
       notification.success({
           message: "You have been sign in successfully!"
       })

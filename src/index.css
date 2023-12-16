@@ -3,3 +3,30 @@
 *, body{
     margin: 0;
 }
+
+/*Header config antd*/
+.ant_modal .ant-modal-header{
+    padding: 15px 25px;
+    margin: -20px -25px 20px -25px;
+    background: teal;
+    color: white;
+}
+
+.ant_modal .ant-modal-title, .ant_modal .ant-modal-close{
+    color: white;
+}
+
+.ant_modal .ant-modal-close:hover{
+    color: red;
+    background: white;
+}
+
+.ant_modal .ant-modal-footer .ant-btn-primary{
+    background: teal;
+}
+
+.ant_modal .ant-modal-footer .ant-btn-primary:hover{
+    background: white;
+    color: teal;
+    border: 1px solid teal;
+}
