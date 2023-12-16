@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { homeUrl, introducedUrl, signinUrl, signupUrl } from "./urls";
+import { homeUrl, introducedUrl, postUrl, signinUrl, signupUrl } from "./urls";
 import { 
     Introduce,
+    Post,
     Signin, 
     Signup, 
     Welcome
@@ -25,6 +26,10 @@ export const routerConfig = createBrowserRouter([
             {
                 path: introducedUrl,
                 element: <Introduce />
+            },
+            {
+                path: postUrl,
+                element: <Post />
             }
         ]
     },

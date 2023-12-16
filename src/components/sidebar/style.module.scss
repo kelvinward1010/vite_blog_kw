@@ -1,0 +1,16 @@
+.container{
+    height: calc(100vh - 55px);
+    width: 150px;
+    background: brown;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    .center{
+        margin: 10px;
+
+        .configURL{
+            margin-top: 10px;
+        }
+    }
+}
