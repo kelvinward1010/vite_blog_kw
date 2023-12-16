@@ -68,6 +68,29 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
         >
             <Input.Password />
         </Form.Item>
+
+        <Form.Item
+            name="confirm_password"
+            label="Confirm Password"
+            dependencies={['new_password']}
+            hasFeedback
+            rules={[
+                {
+                    required: true,
+                    message: 'Please confirm your password!',
+                },
+                ({ getFieldValue }) => ({
+                    validator(_, value) {
+                        if (!value || getFieldValue('new_password') === value) {
+                            return Promise.resolve();
+                        }
+                        return Promise.reject(new Error('The new password that you entered do not match!'));
+                    },
+                }),
+            ]}
+        >
+            <Input.Password />
+        </Form.Item>
     </Form>
 );
 
@@ -85,6 +108,10 @@ function Profile(props: Props) {
         },
         {
             name: ['new_password'],
+            value: '',
+        },
+        {
+            name: ['confirm_password'],
             value: '',
         }
     ]);
