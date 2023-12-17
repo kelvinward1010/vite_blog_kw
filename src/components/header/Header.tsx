@@ -91,7 +91,6 @@ function Header() {
                     >
                         <Avatar className={styles.avatar} icon={<UserOutlined />} />
                     </Dropdown>
-                    <Text className={styles.nameaccount}>{current_user?.email}</Text>
                 </div>
             </div>
         </>
