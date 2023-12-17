@@ -5,6 +5,8 @@ import { CheckCircleOutlined, UserOutlined, WarningOutlined } from "@ant-design/
 import { useState } from "react";
 import { storageService } from "../../../../utils/storage";
 import { createBlogService } from "../../api/create_blog";
+import { useRecoilState } from "recoil";
+import { refeshBlogState } from "../../state/atom";
 
 const { TextArea } = Input;
 const { Text } = Typography;
@@ -18,6 +20,7 @@ function FormCreate() {
 
     const [open, setOpen] = useState(false);
     const current_user = storageService.getStorage().current_user;
+    const [, setIsRefesh] = useRecoilState(refeshBlogState);
 
     const handleOpenForm = (e: any) => {
         e.preventDefault();
@@ -38,6 +41,7 @@ function FormCreate() {
                 )
             })
             setOpen(false);
+            setIsRefesh(true);
         }).catch((res) => {
             notification.error({
                 message: `Could not create blog. Please try again!`,
