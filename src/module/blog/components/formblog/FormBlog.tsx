@@ -13,14 +13,15 @@ interface Props {
 function FormBlog(props: Props) {
 
     const current_user = storageService.getStorage().current_user;
-
+    const user_owner_blog = props?.blog?.user
+    
     return (
         <div className={styles.container}>
             <div className={styles.center}>
                 <div className={styles.top}>
                     <div className={styles.top_head}>
                         <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                        <Text className={styles.name}>{current_user?.email}</Text>
+                        <Text className={styles.name}>{user_owner_blog?.email}</Text>
                     </div>
                     <span className={styles.action}>&sdot;&sdot;&sdot;</span>
                 </div>

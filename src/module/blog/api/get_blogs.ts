@@ -1,8 +1,8 @@
+import axios from "axios";
 import { BASE_URL } from "../../../constant/config";
-import { apiClient } from "../../../lib/api";
 
 
 export const getBlogsService = async (): Promise<any[]> => {
-    const res = await apiClient?.get(`${BASE_URL}posts`)
+    const res = await axios?.get(`${BASE_URL}posts/posts_with_everthing`)
     return res.data
 }
