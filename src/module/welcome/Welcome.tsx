@@ -38,7 +38,9 @@ export function Welcome():JSX.Element {
     return (
         <div className={styles.container}>
             <div className={styles.center}>
-                <Title className={styles.welcome_title} level={2}>Welcome to my FASTAPI MongoDB</Title>
+                <Title className={styles.welcome_title} level={2}>
+                    Welcome to my application!
+                </Title>
                 <Button type="primary" loading={loadings[0]} onClick={() => enterLoading(0)}>
                     Go in to my house!
                 </Button>

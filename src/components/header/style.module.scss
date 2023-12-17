@@ -11,6 +11,46 @@
         margin-left: 10px;
     }
 
+    .header_center{
+        position: relative;
+        color: white;
+        width: 200px;
+        display: flex;
+        justify-content: space-evenly;
+
+        .nav_name{
+            color: white;
+            cursor: pointer;
+            z-index: 5;
+            text-align: center;
+        }
+
+        .animation{
+            position: absolute;
+            height: 100%;
+            top: 0;
+            z-index: 3;
+            background-color: rgb(11, 14, 14);
+            border-radius: 3px;
+            transition: all .5s ease 0s;
+        }
+
+        .nav_name:nth-child(1){
+            width: 100px;
+        }
+        .nav_name:nth-child(1):hover~.animation{
+            width: 100px;
+            left: 0;
+        }
+        .nav_name:nth-child(2){
+            width: 100px;
+        }
+        .nav_name:nth-child(2):hover~.animation{
+            width: 100px;
+            left: 100px;
+        }
+    }
+
     .header_right{
         margin-right: 10px;
 

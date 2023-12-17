@@ -1,5 +1,4 @@
-
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
 import storage, { storageService } from "../../utils/storage";
 import { Avatar, Dropdown, Modal, Typography } from "antd";
@@ -14,6 +13,8 @@ const { Text } = Typography;
 function Header() {
 
     const navigate = useNavigate();
+    const location = useLocation().pathname
+    const keynamelocation = location.split("/")[2]
 
     const [isOpenProfile, setIsOpenProfile] = useState(false);
 
@@ -39,6 +40,20 @@ function Header() {
             key: '1',
         },
     ]
+
+    const navs = [
+        {
+            key: 'introduce',
+            name: "Introduction",
+            link: "/home/introduce"
+        },
+        {
+            key: "post",
+            name: "Posts",
+            link: "/home/post"
+        }
+    ]
+
     return (
         <>
             <Modal
@@ -54,6 +69,19 @@ function Header() {
                 <div className={styles.header_left}>
                     Kelvin Ward
                 </div>
+                <nav className={styles.header_center}>
+                    {navs.map((nav) => (
+                        <Text 
+                            onClick={() => navigate(nav.link)} 
+                            className={styles.nav_name} 
+                            key={nav.key}
+                            style={{
+                                textDecoration: `${keynamelocation == nav.key ? "underline solid white 2px" : "none"}`,
+                            }}
+                        >{nav.name}</Text>
+                    ))}
+                    <div className={styles.animation}></div>
+                </nav>
                 <div className={styles.header_right}>
                     <Dropdown
                         menu={{

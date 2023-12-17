@@ -2,12 +2,13 @@
 
 *, body{
     margin: 0;
+    font-family: sans-serif;
 }
 
 /*Header config antd*/
 .ant_modal .ant-modal-header{
     padding: 15px 25px;
-    margin: -20px -25px 20px -25px;
+    margin: -20px -25px 20px -24px;
     background: teal;
     color: white;
 }
@@ -39,4 +40,19 @@
 
 .done {
     color: green;
+}
+
+
+
+/*Tabs*/
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color: teal !important;
+}
+
+.ant-tabs .ant-tabs-ink-bar{
+    background: red !important;
+}
+
+.ant-tabs-tab:hover{
+    color: teal !important;
 }
