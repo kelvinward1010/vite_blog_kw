@@ -100,7 +100,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
             <Input.Password />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 10, span: 14 }}>
+        <Form.Item wrapperCol={{ offset: 5, span: 14 }}>
             <Button className={styles.button} htmlType="submit">
                 Update Profile
             </Button>
