@@ -31,19 +31,19 @@ export function Signin(): JSX.Element {
       storage.setToken(res.access_token)
       storageService.setStorage(JSON.stringify(res));
       notification.success({
-          message: "You have been sign in successfully!",
-          icon: (
-            <CheckCircleOutlined className="done"/>
-          )
+        message: "You have been sign in successfully!",
+        icon: (
+          <CheckCircleOutlined className="done" />
+        )
       })
       navigate('/home/introduce')
     }).catch((res) => {
       notification.error({
-          message: `Could not sign in. Please try again!`,
-          description: ` ${res?.response?.data?.detail}`,
-          icon: (
-            <WarningOutlined className='warning'/>
-          )
+        message: `Could not sign in. Please try again!`,
+        description: ` ${res?.response?.data?.detail}`,
+        icon: (
+          <WarningOutlined className='warning' />
+        )
       })
     })
   };
@@ -54,7 +54,7 @@ export function Signin(): JSX.Element {
 
   useEffect(() => {
     if (storage.getToken()) navigate("/home/introduce")
-}, [navigate]);
+  }, [navigate]);
 
   return (
     <div className={styles.container}>

@@ -9,6 +9,10 @@ import FatapiLogo from "../../assets/image/fastapi_logo.svg"
 import PyhtonLogo from "../../assets/image/python_logo.png";
 import ViteLogo from "../../assets/image/vite_logo.png";
 import TypescriptLogo from "../../assets/image/typescript_logo.jpg"
+import NextJSLogo from "../../assets/image/nextjs_logo.png"
+import ReactJSLogo from "../../assets/image/react_logo.png"
+import NodeJSLogo from "../../assets/image/nodejs_logo.png"
+import JavaScriptLogo from "../../assets/image/JavaScript_logo.png"
 import Languages from './languages/Languages';
 import SocialMedia from './socialmedia/SocialMedia';
 import Contacts from './contacts/Contacts';
@@ -50,16 +54,28 @@ export function Introduce() {
 
     const list_logos = [
         {
-            src: PyhtonLogo,
+            src: ReactJSLogo,
         },
         {
-            src: FatapiLogo
+            src: NextJSLogo,
         },
         {
             src: ViteLogo,
         },
         {
+            src: JavaScriptLogo,
+        },
+        {
             src: TypescriptLogo,
+        },
+        {
+            src: PyhtonLogo,
+        },
+        {
+            src: FatapiLogo,
+        },
+        {
+            src: NodeJSLogo,
         }
     ]
 

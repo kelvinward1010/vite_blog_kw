@@ -5,7 +5,7 @@ import storage from "../utils/storage";
 
 export const apiClient = axios.create({
     baseURL: BASE_URL,
-    timeout: 1000 * 60 * 30 * 2, // 60 minutes,
+    timeout: 1000 * 60 * 30 * 2 * 24, // 60 minutes,
 })
 
 apiClient.interceptors.request.use(

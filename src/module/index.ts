@@ -4,4 +4,4 @@ export { Signup } from "./sign-up/Signup";
 export { Welcome } from "./welcome/Welcome";
 
 export { Introduce } from "./introduce/Introduce"
-export { Post } from "./post/Post";
+export { Blog } from "./blog/Blog";

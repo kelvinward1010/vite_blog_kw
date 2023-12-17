@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { homeUrl, introducedUrl, postUrl, signinUrl, signupUrl } from "./urls";
+import { blogUrl, homeUrl, introducedUrl, signinUrl, signupUrl } from "./urls";
 import { 
     Introduce,
-    Post,
+    Blog,
     Signin, 
     Signup, 
     Welcome
@@ -21,15 +21,16 @@ export const routerConfig = createBrowserRouter([
     {
         path: homeUrl,
         element: <Layout />,
-        errorElement: <Error />,
         children: [
             {
                 path: introducedUrl,
+                errorElement: <Error />,
                 element: <Introduce />
             },
             {
-                path: postUrl,
-                element: <Post />
+                path: blogUrl,
+                errorElement: <Error />,
+                element: <Blog />
             }
         ]
     },

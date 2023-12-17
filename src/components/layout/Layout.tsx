@@ -19,7 +19,9 @@ export function Layout({ children }: Props): JSX.Element {
 
     return (
         <div className={styles.container}>
-            <Header />
+            <div className={styles.header}>
+                <Header />
+            </div>
             <div>
                 <Outlet />
                 {children}

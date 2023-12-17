@@ -48,9 +48,9 @@ function Header() {
             link: "/home/introduce"
         },
         {
-            key: "post",
-            name: "Posts",
-            link: "/home/post"
+            key: "blog",
+            name: "Blog",
+            link: "/home/blog"
         }
     ]
 

@@ -29,7 +29,7 @@ function SocialMedia() {
                         <List.Item.Meta
                             avatar={<CheckCircleOutlined />}
                             title={<Text> {item.title}</Text>}
-                            description={<a href={item.content}>{item.content}</a>}
+                            description={<a href={item.content} target={'_blank'}>{item.content}</a>}
                         />
                     </List.Item>
                 )}

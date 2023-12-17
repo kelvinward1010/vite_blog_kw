@@ -1,0 +1,47 @@
+.container{
+    width: 60%;
+    height: fit-content;
+    background: teal;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    border-radius: 5px;
+
+    .center{
+        width: 100%;
+        height: 100%;
+
+        .top{
+            margin: 10px;
+
+            .name{
+                color: white;
+                margin-left: 10px;
+            }
+        }
+
+        .form{
+            margin: 0 15px;
+
+            .input:hover{
+                cursor: pointer;
+                background: gainsboro;
+            }
+        }
+    }
+}
+
+.button_reset{
+    margin-left: 10px;
+}
+
+.button{
+    background: white;
+    color: teal;
+    border: 1px solid teal;
+}
+
+.button:hover{
+    background: teal;
+    color: white !important;
+}
