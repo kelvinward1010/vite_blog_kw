@@ -2,7 +2,6 @@
 import { Avatar, Typography } from "antd";
 import styles from "./style.module.scss";
 import { LikeOutlined, MessageOutlined, UserOutlined } from "@ant-design/icons";
-import { storageService } from "../../../../utils/storage";
 
 const { Text, Title } = Typography;
 
@@ -12,9 +11,9 @@ interface Props {
 
 function FormBlog(props: Props) {
 
-    const current_user = storageService.getStorage().current_user;
+    //const current_user = storageService.getStorage().current_user;
     const user_owner_blog = props?.blog?.user
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.center}>
