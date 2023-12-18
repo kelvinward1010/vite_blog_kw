@@ -1,0 +1,38 @@
+.container{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding: 5px 0;
+    margin: 10px 15px 10px 15px;
+    .center{
+        
+        .top{
+            margin: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .top_head{
+
+                .name{
+                    color: teal;
+                    margin-left: 10px;
+                }
+            }
+
+            .action{
+                color: teal;
+                cursor: pointer;
+            }
+
+            .action:hover{
+                background: teal;
+                color: white;
+                padding: 2px 5px;
+                border-radius: 3px;
+            }
+        }
+
+        .content{
+            margin-left: 50px;
+        }
+    }
+}

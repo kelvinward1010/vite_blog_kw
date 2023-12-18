@@ -157,7 +157,14 @@ function Profile(props: Props) {
     }
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
+        
+        notification.error({
+            message: `Could not change profile. Please try again!`,
+            description: ` ${errorInfo}`,
+            icon: (
+                <WarningOutlined className='warning'/>
+            )
+        })
     };
 
     return (

@@ -60,7 +60,13 @@ export function Signup() {
     };
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
+        notification.error({
+            message: `Could not sign up. Please try again!`,
+            description: ` ${errorInfo}`,
+            icon: (
+                <WarningOutlined className='warning'/>
+            )
+        })
     };
 
     useEffect(() => {

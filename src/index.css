@@ -33,6 +33,24 @@
 }
 
 
+/*Header config delete modal antd*/
+.ant_modal_delete .ant-modal-header{
+    padding: 15px 25px;
+    margin: -20px -25px 20px -24px;
+    background: red;
+    color: white;
+}
+
+.ant_modal_delete .ant-modal-title, .ant_modal_delete .ant-modal-close{
+    color: white;
+}
+
+.ant_modal_delete .ant-modal-close:hover{
+    color: red;
+    background: white;
+}
+
+
 
 .warning{
     color: red;
@@ -55,4 +73,10 @@
 
 .ant-tabs-tab:hover{
     color: teal !important;
+}
+
+
+
+.ant-spin-text{
+    color: teal;
 }

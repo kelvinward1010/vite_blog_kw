@@ -1,0 +1,28 @@
+.container{
+    width: 100%;
+    padding: 5px 0;
+
+    .space_cmt{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .input_cmt{
+            width: 100%;
+            margin-left: 15px;
+        }
+        
+        .button{
+            background: white;
+            color: teal;
+            border: 1px solid teal;
+            margin-right: -15px;
+            margin-left: 15px;
+        }
+        
+        .button:hover{
+            background: teal;
+            color: white !important;
+        }
+    }
+}

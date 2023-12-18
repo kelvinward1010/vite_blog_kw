@@ -49,7 +49,13 @@ export function Signin(): JSX.Element {
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    notification.error({
+      message: `Could not sign in. Please try again!`,
+      description: ` ${errorInfo}`,
+      icon: (
+        <WarningOutlined className='warning' />
+      )
+    })
   };
 
   useEffect(() => {
@@ -63,7 +69,7 @@ export function Signin(): JSX.Element {
         <Title level={3} className={styles.title}>SIGN IN</Title>
 
         <Form
-          name="basic"
+          name="signin"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}

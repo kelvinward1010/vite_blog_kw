@@ -1,0 +1,46 @@
+.container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .title1{
+            font-size: 20px;
+            font-weight: 500;
+            color: orange;
+        }
+    }
+
+    .footer{
+
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .button{
+            background: white;
+            color: red;
+            border: 1px solid red;
+        }
+    
+        .button:hover{
+            background: red;
+            color: white !important;
+            border: none;
+        }
+    
+        .button_reset{
+            margin-left: 10px;
+        }
+    }
+}

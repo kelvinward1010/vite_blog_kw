@@ -29,13 +29,13 @@ function Header() {
     const items = [
         {
           label: <>
-            <ButtonConfig onClick={() => setIsOpenProfile(true)} name="Profile"/>
+            <ButtonConfig type={'fullbg'} onClick={() => setIsOpenProfile(true)} name="Profile"/>
           </>,
           key: '0',
         },
         {
             label: <>
-              <ButtonConfig onClick={handleLogout} name="Sign Out"/>
+              <ButtonConfig type={'fullbg'} onClick={handleLogout} name="Sign Out"/>
             </>,
             key: '1',
         },
@@ -62,6 +62,7 @@ function Header() {
                 onCancel={() => setIsOpenProfile(false)}
                 width={700}
                 className="ant_modal"
+                footer={null}
             >
                 <Profile current_user={current_user}/>
             </Modal>

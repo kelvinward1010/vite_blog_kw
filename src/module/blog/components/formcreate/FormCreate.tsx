@@ -54,7 +54,13 @@ function FormCreate() {
     };
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
+        notification.error({
+            message: `Could not create blog. Please try again!`,
+            description: ` ${errorInfo}`,
+            icon: (
+                <WarningOutlined className='warning' />
+            )
+        })
     };
 
     return (
@@ -68,7 +74,7 @@ function FormCreate() {
                 onOk={() => setOpen(false)}
             >
                 <Form
-                    name="basic"
+                    name="formcreatecomment"
                     labelCol={{ span: 5 }}
                     wrapperCol={{ span: 19 }}
                     style={{ maxWidth: 600 }}

@@ -1,0 +1,17 @@
+.container{
+
+    .button{
+        background: white;
+        color: teal;
+        border: 1px solid teal;
+    }
+
+    .button:hover{
+        background: teal;
+        color: white !important;
+    }
+
+    .button_reset{
+        margin-left: 10px;
+    }
+}
