@@ -2,7 +2,7 @@
 import styles from './style.module.scss';
 import kelvinimage from '../../assets/image/kel.jpg'
 import { Tabs } from 'antd';
-import { BulbOutlined, ContactsOutlined, GlobalOutlined, KeyOutlined, UserOutlined } from '@ant-design/icons';
+import { BulbOutlined, ContactsOutlined, FundProjectionScreenOutlined, GlobalOutlined, KeyOutlined, UserOutlined } from '@ant-design/icons';
 import AboutMe from './aboutme/AboutMe';
 import SkillsTechnologies from './skills_technologies/SkillsTechnologies';
 import FatapiLogo from "../../assets/image/fastapi_logo.svg"
@@ -16,6 +16,7 @@ import JavaScriptLogo from "../../assets/image/JavaScript_logo.png"
 import Languages from './languages/Languages';
 import SocialMedia from './socialmedia/SocialMedia';
 import Contacts from './contacts/Contacts';
+import Projects from './projects/Projects';
 
 export function Introduce() {
 
@@ -34,18 +35,24 @@ export function Introduce() {
         },
         {
             key: "3",
-            label:"Skills Technologies",
-            children: <SkillsTechnologies />,
-            icon: KeyOutlined
-        },
-        {
-            key: "4",
             label:"Languages",
             children: <Languages />,
             icon: BulbOutlined
         },
         {
+            key: "4",
+            label:"Skills Technologies",
+            children: <SkillsTechnologies />,
+            icon: KeyOutlined
+        },
+        {
             key: "5",
+            label:"Projects",
+            children: <Projects />,
+            icon: FundProjectionScreenOutlined
+        },
+        {
+            key: "6",
             label:"Contacts",
             children: <Contacts />,
             icon: ContactsOutlined

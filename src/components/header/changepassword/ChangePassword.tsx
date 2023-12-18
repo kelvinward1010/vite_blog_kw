@@ -1,13 +1,15 @@
 
-import { Button, Form, Input, notification } from "antd";
+import { Button, Form, Input, Modal, notification } from "antd";
 import styles from "./style.module.scss";
 import { useState } from "react";
-import { changeProfileService } from "./api/change_profile";
 import { CheckCircleOutlined, WarningOutlined } from "@ant-design/icons";
+import { changePasswordService } from "./api/change_password";
 
 
 interface Props {
     current_user?: any;
+    isOpen?: boolean;
+    setIsOpen?: any;
 }
 
 const formItemLayout = {
@@ -102,7 +104,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
 
         <Form.Item wrapperCol={{ offset: 5, span: 14 }}>
             <Button className={styles.button} htmlType="submit">
-                Update Profile
+                Update Password
             </Button>
             <Button className={styles.button_reset} htmlType="reset">Reset</Button>
         </Form.Item>
@@ -110,7 +112,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
 );
 
 
-function Profile(props: Props) {
+function ChangePassword(props: Props) {
 
     const [fields, setFields] = useState<FieldData[]>([
         {
@@ -138,16 +140,17 @@ function Profile(props: Props) {
             password: values?.new_password
         }
 
-        changeProfileService(props.current_user?.id, data).then(() => {
+        changePasswordService(props.current_user?.id, data).then(() => {
             notification.success({
-                message: "You have been change your profile successfully!",
+                message: "You have been change your password successfully!",
                 icon: (
                     <CheckCircleOutlined className="done"/>
                 )
             })
+            props.setIsOpen(false);
         }).catch((res) => {
             notification.error({
-                message: `Could not change profile. Please try again!`,
+                message: `Could not change password. Please try again!`,
                 description: ` ${res?.response?.data?.detail}`,
                 icon: (
                     <WarningOutlined className='warning'/>
@@ -159,7 +162,7 @@ function Profile(props: Props) {
     const onFinishFailed = (errorInfo: any) => {
         
         notification.error({
-            message: `Could not change profile. Please try again!`,
+            message: `Could not change password. Please try again!`,
             description: ` ${errorInfo}`,
             icon: (
                 <WarningOutlined className='warning'/>
@@ -168,17 +171,26 @@ function Profile(props: Props) {
     };
 
     return (
-        <div className={styles.container}>
-            <CustomizedForm
-                fields={fields}
-                onChange={(newFields) => {
-                    setFields(newFields);
-                }}
-                onFailure={(error: any) => onFinishFailed(error)}
-                onSubmit={(values: any) => onFinish(values)}
-            />
-        </div>
+        <Modal
+            title={`Change Password of ${props.current_user?.email}`}
+            open={props.isOpen} 
+            onCancel={() => props.setIsOpen(false)}
+            width={700}
+            className="ant_modal"
+            footer={null}
+        >
+            <div className={styles.container}>
+                <CustomizedForm
+                    fields={fields}
+                    onChange={(newFields) => {
+                        setFields(newFields);
+                    }}
+                    onFailure={(error: any) => onFinishFailed(error)}
+                    onSubmit={(values: any) => onFinish(values)}
+                />
+            </div>
+        </Modal>
     )
 }
 
-export default Profile
+export default ChangePassword

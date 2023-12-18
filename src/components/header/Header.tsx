@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
 import storage, { storageService } from "../../utils/storage";
-import { Avatar, Dropdown, Modal, Typography } from "antd";
+import { Avatar, Dropdown, Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import ButtonConfig from "../button/ButtonConfig";
 import { useState } from "react";
-import Profile from "./profile/Profile";
+import ChangePassword from "./changepassword/ChangePassword";
 
 
 const { Text } = Typography;
@@ -16,7 +16,7 @@ function Header() {
     const location = useLocation().pathname
     const keynamelocation = location.split("/")[2]
 
-    const [isOpenProfile, setIsOpenProfile] = useState(false);
+    const [isOpenChangePassword, setIsOpenChangePassword] = useState(false);
 
     const handleLogout = () => {
         storage.clearToken();
@@ -29,7 +29,7 @@ function Header() {
     const items = [
         {
           label: <>
-            <ButtonConfig type={'fullbg'} onClick={() => setIsOpenProfile(true)} name="Profile"/>
+            <ButtonConfig type={'fullbg'} onClick={() => setIsOpenChangePassword(true)} name="Change Passowrd"/>
           </>,
           key: '0',
         },
@@ -56,16 +56,11 @@ function Header() {
 
     return (
         <>
-            <Modal
-                title={`Profile of ${current_user?.email}`}
-                open={isOpenProfile} 
-                onCancel={() => setIsOpenProfile(false)}
-                width={700}
-                className="ant_modal"
-                footer={null}
-            >
-                <Profile current_user={current_user}/>
-            </Modal>
+            <ChangePassword 
+                current_user={current_user}
+                isOpen={isOpenChangePassword}
+                setIsOpen={setIsOpenChangePassword}
+            />
             <div className={styles.container}>
                 <div className={styles.header_left}>
                     Kelvin Ward

@@ -10,7 +10,7 @@ interface Props {
     password: string;
 }
 
-export const changeProfileService = async (id: any ,data: Props): Promise<any> => {
+export const changePasswordService = async (id: any ,data: Props): Promise<any> => {
     const res = await apiClient?.put(`${BASE_URL}users/update/${id}`, data)
     return res.data
 }
