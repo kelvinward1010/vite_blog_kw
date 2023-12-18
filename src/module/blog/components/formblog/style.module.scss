@@ -55,7 +55,10 @@
             .like{
                 width: 45%;
                 text-align: center;
-                cursor: pointer;
+
+                .iconlike{
+                    cursor: pointer;
+                }
 
                 .titleLike{
                     color: white;

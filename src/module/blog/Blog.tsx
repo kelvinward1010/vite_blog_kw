@@ -30,9 +30,22 @@ export function Blog() {
 
     const configdata = data?.slice(-countBlog)?.reverse();
 
-    const handleplusblog = () => setCountBlog(countBlog + 1)
-    const handleminusblog = () => setCountBlog(countBlog - 1)
-
+    const handleplusblog = () => {
+        if(data?.length > countBlog){
+            setCountBlog(countBlog + 1)
+        }else{
+            setCountBlog(data?.length)
+        }
+    }
+    const handleminusblog = () => {
+        if(countBlog > 1){
+            setCountBlog(countBlog - 1)
+        }
+        if(countBlog == 1) {
+            setCountBlog(1)
+        }
+    }
+    
     return (
         <div className={styles.container}>
             <div className={styles.formcreate}>
@@ -46,12 +59,16 @@ export function Blog() {
                     ))}
                   
                     <div className={styles.datacount}>
-                        <div className={styles.moredata} onClick={handleplusblog}>
-                            <p>More Blog</p> 
-                        </div>
-                        <div className={styles.lessdata} onClick={handleminusblog}>
-                            <p>Less Blog</p> 
-                        </div>
+                        {countBlog != data?.length || configdata?.length == 0 ? (
+                            <div className={styles.moredata} onClick={handleplusblog}>
+                                <p>More Blog</p> 
+                            </div>
+                        ): null}
+                        {configdata?.length != 1 ? (
+                            <div className={styles.lessdata} onClick={handleminusblog}>
+                                <p>Less Blog</p> 
+                            </div>
+                        ): null}
                     </div>
                 </div>
             </div>

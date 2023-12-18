@@ -1,15 +1,17 @@
 
 import { Avatar, Dropdown, Typography, notification } from "antd";
 import styles from "./style.module.scss";
-import { CheckCircleOutlined, LikeOutlined, MessageOutlined, UserOutlined, WarningOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, LikeFilled, LikeOutlined, MessageOutlined, UserOutlined, WarningOutlined } from "@ant-design/icons";
 import ButtonConfig from "../../../../components/button/ButtonConfig";
 import { deleteBlogService } from "../../api/delete_blog";
 import { useRecoilState } from "recoil";
 import { refeshBlogState } from "../../state/atom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormUpdate from "../formupdate/FormUpdate";
 import FormDelete from "../../../../components/formdelete/FormDelete";
 import FormWatch from "../formwatch/FormWatch";
+import { storageService } from "../../../../utils/storage";
+import { likeBlogService } from "../../api/like_blog";
 
 const { Text, Title } = Typography;
 
@@ -19,12 +21,14 @@ interface Props {
 
 function FormBlog(props: Props) {
 
-    //const current_user = storageService.getStorage().current_user;
+    const current_user = storageService.getStorage().current_user;
     const user_owner_blog = props?.blog?.user;
     const [, setIsRefesh] = useRecoilState(refeshBlogState);
     const [openUpdate, setOpenUpdate] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
     const [openWatchBlog, setOpenWatchBlog] = useState(false);
+    const [isLike, setIsLike] = useState(1);
+    const [textActionLike, setTextActionLike] = useState('')
 
 
     const handleDeleteBlog = () => {
@@ -44,6 +48,45 @@ function FormBlog(props: Props) {
         }).catch((res) => {
             notification.error({
                 message: `Could not delete blog. Please try again!`,
+                description: ` ${res?.response?.data?.detail}`,
+                icon: (
+                    <WarningOutlined className='warning' />
+                )
+            })
+        })
+    }
+
+    const data_likes: any[] = props.blog?.likes;
+
+    const check_like = data_likes.find(item => String(item) == String(current_user?.id))
+    
+    useEffect(() => {
+        if(!check_like) {
+            setIsLike(1)
+            setTextActionLike('liked')
+        }else{
+            setIsLike(0)
+            setTextActionLike('moved')
+        }
+    },[check_like, isLike, setIsLike])
+
+    const handleLikeBlog = () => {
+
+        const data = {
+            isLike: isLike,
+        }
+
+        likeBlogService(props?.blog?.id, data).then(() => {
+            notification.success({
+                message: `You have been ${textActionLike} blog successfully!`,
+                icon: (
+                    <CheckCircleOutlined className="done" />
+                )
+            })
+            setIsRefesh(true);
+        }).catch((res) => {
+            notification.error({
+                message: `Could not ${textActionLike} blog. Please try again!`,
                 description: ` ${res?.response?.data?.detail}`,
                 icon: (
                     <WarningOutlined className='warning' />
@@ -75,6 +118,9 @@ function FormBlog(props: Props) {
         },
     ]
 
+    const length_comment = props?.blog?.comments?.length;
+    const length_like = props.blog?.likes?.length;
+
     return (
         <>
             <FormUpdate 
@@ -85,8 +131,9 @@ function FormBlog(props: Props) {
             <FormDelete 
                 isOpen={openDelete}
                 setIsOpen={setOpenDelete}
-                blog={props.blog}
                 onDelete={handleDeleteBlog}
+                title={"Delete Blog"}
+                name={"blog"}
             />
             <FormWatch
                 isOpen={openWatchBlog}
@@ -100,7 +147,7 @@ function FormBlog(props: Props) {
                             <Avatar className={styles.avatar} icon={<UserOutlined />} />
                             <Text className={styles.name}>{user_owner_blog?.email}</Text>
                         </div>
-                        <Dropdown
+                        {current_user?.email == props.blog?.user?.email ? <Dropdown
                             menu={{
                                 items,
                             }}
@@ -108,7 +155,7 @@ function FormBlog(props: Props) {
                             placement={'bottomRight'}
                         >
                             <span className={styles.action}>&sdot;&sdot;&sdot;</span>
-                        </Dropdown>
+                        </Dropdown> : null}
                     </div>
                     <div className={styles.content} onClick={() => setOpenWatchBlog(true)}>
                         <Title className={styles.title} level={4}>{props.blog?.title}</Title>
@@ -116,12 +163,15 @@ function FormBlog(props: Props) {
                     </div>
                     <div className={styles.footer}>
                         <div className={styles.like}>
-                            <LikeOutlined />
-                            <Text className={styles.titleLike}>Like</Text>
+                            {!check_like ? 
+                                <LikeOutlined className={styles.iconlike} onClick={handleLikeBlog}/> :
+                                <LikeFilled className={styles.iconlike} onClick={handleLikeBlog}/>
+                            }
+                            <Text className={styles.titleLike}>Like ({length_like})</Text>
                         </div>
                         <div className={styles.comment}>
                             <MessageOutlined />
-                            <Text className={styles.titleComment}>Comment</Text>
+                            <Text className={styles.titleComment}>Comment ({length_comment})</Text>
                         </div>
                     </div>
                 </div>

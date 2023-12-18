@@ -66,7 +66,7 @@ function FormCreate() {
     return (
         <>
             <Modal
-                title={`Create blog with ${current_user?.email}`}
+                title={`Create blog`}
                 open={open}
                 onCancel={() => setOpen(false)}
                 width={700}

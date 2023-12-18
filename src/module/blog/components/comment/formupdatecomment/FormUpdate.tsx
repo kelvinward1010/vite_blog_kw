@@ -1,16 +1,17 @@
 
-import { Button, Form, Input, Modal, notification } from "antd";
 import styles from "./style.module.scss";
-import { useState } from "react";
-import { updateBlogService } from "../../api/update_blog";
-import { CheckCircleOutlined, WarningOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Modal, notification } from "antd";
 import { useRecoilState } from "recoil";
-import { refeshBlogState } from "../../state/atom";
+import { refeshBlogState } from "../../../state/atom";
+import { useState } from "react";
+import { updateCommentService } from "../api/update_comment";
+import { CheckCircleOutlined, WarningOutlined } from "@ant-design/icons";
+
 
 interface Props {
     isOpen?: boolean;
     setIsOpen?: any;
-    blog?: any;
+    comment?: any;
 }
 
 
@@ -42,7 +43,7 @@ interface CustomizedFormProps {
 
 const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFailure, onSubmit }) => (
     <Form
-        name="formupdateblog"
+        name="formupdatecomment"
         {...formItemLayout}
         fields={fields}
         onFieldsChange={(_, allFields) => {
@@ -51,18 +52,9 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
         onFinish={onSubmit}
         onFinishFailed={onFailure}
         initialValues={{
-            "title": fields.find(value => value?.value != null)?.value,
             "content": fields.find(value => value?.value != null)?.value,
         }}
     >
-        <Form.Item
-            name="title"
-            label="Title"
-            rules={[{ required: true, message: 'Title is required!' }]}
-        >
-            <Input />
-        </Form.Item>
-
         <Form.Item
             name="content"
             label="Content"
@@ -73,7 +65,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
 
         <Form.Item wrapperCol={{ offset: 5, span: 14 }}>
             <Button className={styles.button} htmlType="submit">
-                Update Blog
+                Update Comment
             </Button>
             <Button className={styles.button_reset} htmlType="reset">Reset</Button>
         </Form.Item>
@@ -82,29 +74,23 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
 
 
 function FormUpdate(props: Props) {
-
     const [, setIsRefesh] = useRecoilState(refeshBlogState);
 
     const [fields, setFields] = useState<FieldData[]>([
         {
-            name: ['title'],
-            value: props.blog?.title,
-        },
-        {
             name: ['content'],
-            value: props.blog?.content,
+            value: props?.comment?.content,
         },
     ]);
 
     const onFinish = (values: any) => {
         const data = {
-            title: values?.title,
             content: values?.content,
         }
 
-        updateBlogService(props.blog?.id, data).then(() => {
+        updateCommentService(props.comment?.id, data).then(() => {
             notification.success({
-                message: "You have been update your blog successfully!",
+                message: "You have been update your comment successfully!",
                 icon: (
                     <CheckCircleOutlined className="done"/>
                 )
@@ -113,7 +99,7 @@ function FormUpdate(props: Props) {
             props.setIsOpen(false)
         }).catch((res) => {
             notification.error({
-                message: `Could not update your blog. Please try again!`,
+                message: `Could not update your comment. Please try again!`,
                 description: ` ${res?.response?.data?.detail}`,
                 icon: (
                     <WarningOutlined className='warning'/>
@@ -124,7 +110,7 @@ function FormUpdate(props: Props) {
 
     const onFinishFailed = (errorInfo: any) => {
         notification.error({
-            message: `Could not update your blog. Please try again!`,
+            message: `Could not update your comment. Please try again!`,
             description: ` ${errorInfo}`,
             icon: (
                 <WarningOutlined className='warning'/>
@@ -134,7 +120,7 @@ function FormUpdate(props: Props) {
 
     return (
         <Modal
-            title={`Update for post of ${props.blog?.title}`}
+            title={`Update comment`}
             open={props.isOpen}
             onCancel={() =>props.setIsOpen(false)}
             width={700}

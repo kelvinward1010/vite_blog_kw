@@ -5,8 +5,9 @@ import styles from "./style.module.scss";
 interface Props {
     isOpen?: boolean;
     setIsOpen?: any;
-    blog?: any;
     onDelete?: () => void;
+    title?: string;
+    name?: string;
 }
 
 const { Text } = Typography;
@@ -14,7 +15,7 @@ const { Text } = Typography;
 function FormDelete(props: Props) {
     return (
         <Modal
-            title={`Delete Blog`}
+            title={props.title}
             open={props.isOpen}
             onCancel={() =>props.setIsOpen(false)}
             width={500}
@@ -23,8 +24,7 @@ function FormDelete(props: Props) {
         >
             <div className={styles.container}>
                 <div className={styles.title}>
-                    <Text className={styles.title1}>Are you sure to delete this blog?</Text>
-                    <Text>{props.blog.title}</Text>
+                    <Text className={styles.title1}>Are you sure to delete this {props.name}?</Text>
                 </div>
                 <div className={styles.footer}>
                     <Button className={styles.button} onClick={props.onDelete} htmlType="submit">
