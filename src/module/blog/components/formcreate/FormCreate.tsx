@@ -74,7 +74,7 @@ function FormCreate() {
                 onOk={() => setOpen(false)}
             >
                 <Form
-                    name="formcreatecomment"
+                    name="formcreateblog"
                     labelCol={{ span: 5 }}
                     wrapperCol={{ span: 19 }}
                     style={{ maxWidth: 600 }}
