@@ -72,6 +72,7 @@ function FormCreate() {
                 width={700}
                 className="ant_modal"
                 onOk={() => setOpen(false)}
+                footer={null}
             >
                 <Form
                     name="formcreateblog"
