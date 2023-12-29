@@ -15,7 +15,7 @@ function FormUsers() {
     useEffect(() => {
         searchUsersService({ search: text}).then((res) => setDataSearch(res));
     },[text != ''])
-    console.log(dataSearch)
+    
     return (
         <div className={styles.container}>
             <div className={styles.users}>
