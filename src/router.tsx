@@ -1,16 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import { blogUrl, homeUrl, introducedUrl, signinUrl, signupUrl } from "./urls";
+import { blogUrl, conversationUrl, homeUrl, introducedUrl, signinUrl, signupUrl } from "./urls";
 import { 
     Introduce,
     Blog,
     Signin, 
     Signup, 
-    Welcome
+    Welcome,
+    LayoutBlog
 } from "./module";
 import { 
     Error, 
     Layout
 } from "./components";
+import { Conversation } from "./module/conversation/Conversation";
 
 
 
@@ -30,7 +32,12 @@ export const routerConfig = createBrowserRouter([
             {
                 path: blogUrl,
                 errorElement: <Error />,
-                element: <Blog />
+                element: <LayoutBlog />
+            },
+            {
+                path: conversationUrl,
+                errorElement: <Error />,
+                element: <Conversation />
             }
         ]
     },

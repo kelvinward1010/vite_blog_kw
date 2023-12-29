@@ -1,0 +1,62 @@
+.container{
+    width: 40%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+
+    .formcreate{
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .blog{
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .blog_center{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .spin{
+                color: teal;
+                margin-top: 20px;
+            }
+
+            .datacount{
+                display: flex;
+                width: 60%;
+                justify-content: space-evenly;
+
+                .moredata{
+                    text-align: center;
+                    margin: 15px 0;
+                    padding: 5px 10px;
+                    color: teal;
+                    border-radius: 3px;
+                    border: 1px solid teal;
+                    cursor: pointer;
+                }
+    
+                .lessdata{
+                    text-align: center;
+                    margin: 15px 0;
+                    padding: 5px 10px;
+                    color: orange;
+                    border-radius: 3px;
+                    border: 1px solid orange;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

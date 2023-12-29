@@ -80,3 +80,9 @@
 .ant-spin-text{
     color: teal;
 }
+
+
+/*Search*/
+.input_search.ant-input {
+    border: 2px solid teal !important;
+}

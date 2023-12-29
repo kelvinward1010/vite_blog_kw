@@ -6,6 +6,7 @@ import { UserOutlined } from "@ant-design/icons";
 import ButtonConfig from "../button/ButtonConfig";
 import { useState } from "react";
 import ChangePassword from "./changepassword/ChangePassword";
+import { blogUrl, conversationUrl, introducedUrl } from "../../urls";
 
 
 const { Text } = Typography;
@@ -45,13 +46,18 @@ function Header() {
         {
             key: 'introduce',
             name: "Introduction",
-            link: "/home/introduce"
+            link: introducedUrl,
         },
         {
             key: "blog",
             name: "Blog",
-            link: "/home/blog"
-        }
+            link: blogUrl,
+        },
+        {
+            key: "conversation",
+            name: "Conversation",
+            link: conversationUrl,
+        },
     ]
 
     return (

@@ -14,7 +14,7 @@
     .header_center{
         position: relative;
         color: white;
-        width: 200px;
+        width: 300px;
         display: flex;
         justify-content: space-evenly;
 
@@ -48,6 +48,13 @@
         .nav_name:nth-child(2):hover~.animation{
             width: 100px;
             left: 100px;
+        }
+        .nav_name:nth-child(3){
+            width: 100px;
+        }
+        .nav_name:nth-child(3):hover~.animation{
+            width: 100px;
+            left: 200px;
         }
     }
 

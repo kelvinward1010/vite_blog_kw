@@ -1,0 +1,29 @@
+.container{
+    width: fit-content;
+    padding: 0 50px;
+    border: 1px solid teal;
+    border-radius: 5px;
+    
+    .users{
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .user{
+            width: 100%;
+            padding: 10px 5px;
+            margin: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid teal;
+            border-radius: 5px;
+
+            .name{
+                width: 80%;
+            }
+        }
+    }
+}
