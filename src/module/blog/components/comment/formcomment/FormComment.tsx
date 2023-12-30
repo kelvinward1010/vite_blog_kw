@@ -92,7 +92,7 @@ function FormComment(props: Props) {
                     <div className={styles.top}>
                         <div className={styles.top_head}>
                             <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                            <Text className={styles.name}>{user_comment?.email}</Text>
+                            <Text className={styles.name}>{user_comment?.name}</Text>
                         </div>
                         {current_user?.email == user_comment?.email ?  <Dropdown
                             menu={{

@@ -145,7 +145,7 @@ function FormBlog(props: Props) {
                     <div className={styles.top}>
                         <div className={styles.top_head}>
                             <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                            <Text className={styles.name}>{user_owner_blog?.email}</Text>
+                            <Text className={styles.name}>{user_owner_blog?.name}</Text>
                         </div>
                         {current_user?.email == props.blog?.user?.email ? <Dropdown
                             menu={{

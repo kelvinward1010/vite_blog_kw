@@ -11,6 +11,7 @@ import { CheckCircleOutlined, WarningOutlined } from '@ant-design/icons';
 const { Title, Text } = Typography;
 
 type FieldType = {
+    name?: string
     email?: string;
     password?: string;
     confirmPassword?: string;
@@ -37,6 +38,7 @@ export function Signup() {
 
     const onFinish = (values: any) => {
         const data = {
+            name: values.name,
             email: values.email,
             password: values.password
         }
@@ -89,9 +91,17 @@ export function Signup() {
                     autoComplete="off"
                 >
                     <Form.Item<FieldType>
+                        label="Name"
+                        name="name"
+                        rules={[{ required: true, message: 'Please input your name!' }]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item<FieldType>
                         label="Email"
                         name="email"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
+                        rules={[{ required: true, message: 'Please input your email!' }]}
                     >
                         <Input />
                     </Form.Item>

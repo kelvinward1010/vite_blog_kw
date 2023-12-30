@@ -13,24 +13,28 @@
         border-left: 1px solid teal;
         border-right: 1px solid teal;
 
-
-        .head_img{
-
-            .avatar_private{
-                margin-top: -32px;
-                margin-left: 32px;
-                border: 1px solid black;
-            }
-        }
-
         .head_info{
             display: flex;
             justify-content: space-between;
-            margin-left: 16px;
+            align-items: center;
+            margin-left: 32px;
+            margin-top: -32px;
+
+            .head_info_first{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .avatar_private{
+                    border: 1px solid black;
+                }
+            }
 
             .head_info_actions{
                 display: flex;
                 margin-right: 32px;
+                margin-top: 20px;
             }
         }
     }

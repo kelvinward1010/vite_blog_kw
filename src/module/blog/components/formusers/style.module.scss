@@ -14,7 +14,7 @@
 
         .user{
             width: 100%;
-            padding: 10px 5px;
+            padding: 10px 0 10px 5px;
             margin: 10px 20px;
             display: flex;
             align-items: center;
@@ -24,7 +24,8 @@
             cursor: pointer;
 
             .name{
-                width: 80%;
+                width: 75%;
+                margin-left: 5px;
             }
         }
     }

@@ -4,6 +4,7 @@ import { apiClient } from "../../../lib/api";
 
 
 interface Props {
+    name: string;
     email: string;
     password: string;
 }

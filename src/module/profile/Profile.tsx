@@ -30,10 +30,12 @@ export function Profile() {
                         height={200}  
                         src={HinhNenProfileDefault}
                     />
-                    <Avatar className={styles.avatar_private} size={64} src={ReactLogo} />
                 </div>
                 <div className={styles.head_info}>
-                    <Title level={4}>{user?.email}</Title>
+                    <div className={styles.head_info_first}>
+                        <Avatar className={styles.avatar_private} size={64} src={ReactLogo} />
+                        <Title level={4}>{user?.name}</Title>
+                    </div>
                     <div className={styles.head_info_actions}>
                         <Button icon={<MessageOutlined />} className={styles.button}>Message</Button>
                         <Button icon={<UserAddOutlined />} className={styles.button}>Follow</Button>

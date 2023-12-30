@@ -49,12 +49,21 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
         onFinish={onSubmit}
         onFinishFailed={onFailure}
         initialValues={{
+            "name": fields.find(value => value?.value != null)?.value,
             "email": fields.find(value => value?.value != null)?.value,
             "old_password": "",
             "new_password": "",
             "confirm_password": "",
         }}
     >
+        <Form.Item
+            name="name"
+            label="Name"
+            rules={[{ required: true, message: 'Name is required!' }]}
+        >
+            <Input />
+        </Form.Item>
+
         <Form.Item
             name="email"
             label="Email"
@@ -116,6 +125,10 @@ function ChangePassword(props: Props) {
 
     const [fields, setFields] = useState<FieldData[]>([
         {
+            name: ['name'],
+            value: props.current_user?.name,
+        },
+        {
             name: ['email'],
             value: props.current_user?.email,
         },
@@ -135,6 +148,7 @@ function ChangePassword(props: Props) {
 
     const onFinish = (values: any) => {
         const data = {
+            name: values?.name,
             email: values?.email,
             old_password: values?.old_password,
             password: values?.new_password

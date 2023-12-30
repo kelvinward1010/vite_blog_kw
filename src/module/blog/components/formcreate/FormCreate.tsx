@@ -112,7 +112,7 @@ function FormCreate() {
                 <div className={styles.center}>
                     <div className={styles.top}>
                         <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                        <Text className={styles.name}>{current_user?.email}</Text>
+                        <Text className={styles.name}>{current_user?.name}</Text>
                     </div>
                     <div className={styles.form}>
                         <TextArea

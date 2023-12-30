@@ -32,7 +32,7 @@ function FormUsers() {
                 {dataSearch?.map((data) => (
                     <div className={styles.user} onClick={() => handleGoUser(data?.id)} key={data?.id}>
                         <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                        <Text className={styles.name}>{data?.email}</Text>
+                        <Text className={styles.name}>{data?.name}</Text>
                     </div>
                 ))}
             </div>
