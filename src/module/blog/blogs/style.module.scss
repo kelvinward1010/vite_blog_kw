@@ -60,3 +60,16 @@
         }
     }
 }
+
+
+@media screen and (max-width: 900px) {
+    .container{
+        width: 62%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .container{
+        width: 80%;
+    }
+}

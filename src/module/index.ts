@@ -6,3 +6,4 @@ export { Welcome } from "./welcome/Welcome";
 export { Introduce } from "./introduce/Introduce";
 export { Blog } from "./blog/blogs/Blog";
 export { LayoutBlog } from "./blog/LayoutBlog";
+export { Profile } from "./profile/Profile";
