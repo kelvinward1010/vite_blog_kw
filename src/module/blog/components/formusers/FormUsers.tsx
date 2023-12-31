@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { searchUsersService } from "../../api/search_users";
 import { useNavigate } from "react-router-dom";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 function FormUsers() {
 
@@ -25,10 +25,13 @@ function FormUsers() {
     return (
         <div className={styles.container}>
             <div className={styles.users}>
-                {/* <FormSearch
-                    placeholder="Search user..." 
-                    setInputValue={setText}
-                /> */}
+                <div className={styles.head}>
+                    <Title level={5}>Contacts</Title>
+                    {/* <FormSearch
+                        placeholder="Search user..." 
+                        setInputValue={setText}
+                    /> */}
+                </div>
                 {dataSearch?.map((data) => (
                     <div className={styles.user} onClick={() => handleGoUser(data?.id)} key={data?.id}>
                         <Avatar className={styles.avatar} icon={<UserOutlined />} />

@@ -14,7 +14,7 @@ function SkillsTechnologies() {
         },
         {
             title: 'Front End',
-            content: "ReactJS, NextJS, Vite, HTML/CSS, SCSS"
+            content: "ReactJS, NextJS, Vite, HTML/CSS, SCSS, Redux"
         },
         {
             title: 'Back End',

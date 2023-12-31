@@ -1,4 +1,25 @@
 .container{
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    overflow-x: hidden;
+
+    .left{
+        width: 24%;
+        top: 0;
+        position: sticky;
+        z-index: 999;
+    }
+
+    .center{
+        width: 46%;
+    }
+
+    .right{
+        width: 28%;
+        margin-right: 10px;
+        top: 0;
+        position: sticky;
+        z-index: 999;
+    }
 }

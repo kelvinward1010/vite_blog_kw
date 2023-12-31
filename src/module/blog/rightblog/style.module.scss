@@ -1,5 +1,5 @@
 .container{
-    width: 29%;
+    width: 100%;
     height: calc(100vh - 70px);
     display: flex;
     flex-direction: column;
@@ -7,6 +7,18 @@
     padding: 0 15px;
     padding-top: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+    .head_right{
+        width: 100%;
+        margin-bottom: 10px;
+
+        .img{
+            border-radius: 5px;
+        }
+    }
+    .users{
+        width: 100%;
+    }
 }
 
 

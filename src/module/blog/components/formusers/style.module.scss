@@ -1,31 +1,44 @@
 .container{
-    width: fit-content;
-    padding: 0 50px;
+    width: 100%;
     border: 1px solid teal;
     border-radius: 5px;
     overflow-y: auto;
     
     .users{
         height: 400px;
+        overflow-x: hidden;
         display: flex;
         justify-content: start;
         align-items: center;
         flex-direction: column;
 
+        .head{
+            width: 100%;
+            padding: 10px 0 10px 10px;
+            display: flex;
+            align-items: center;
+        }
+
         .user{
             width: 100%;
-            padding: 10px 0 10px 5px;
-            margin: 10px 20px;
+            padding: 10px 0 10px 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border: 1px solid teal;
-            border-radius: 5px;
             cursor: pointer;
 
             .name{
-                width: 75%;
+                width: 90%;
                 margin-left: 5px;
+            }
+        }
+
+        .user:hover{
+            background: teal;
+            color: white;
+
+            .name{
+                color: white;
             }
         }
     }

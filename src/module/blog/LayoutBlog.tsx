@@ -9,9 +9,15 @@ export function LayoutBlog(){
 
     return(
         <div className={styles.container}>
-            <LeftBlog />
-            <Blog />
-            <RightBlog />
+            <div className={styles.left}>
+                <LeftBlog />
+            </div>
+            <div className={styles.center}>
+                <Blog />
+            </div>
+            <div className={styles.right}>
+                <RightBlog />
+            </div>
         </div>
     )
 }

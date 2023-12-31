@@ -5,6 +5,29 @@
     font-family: sans-serif;
 }
 
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: teal; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+}
+
+
 /*Header config antd*/
 .ant_modal .ant-modal-header{
     padding: 15px 25px;
@@ -86,3 +109,4 @@
 .input_search.ant-input {
     border: 2px solid teal !important;
 }
+
