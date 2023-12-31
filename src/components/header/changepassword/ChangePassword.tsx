@@ -49,8 +49,8 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields, onFai
         onFinish={onSubmit}
         onFinishFailed={onFailure}
         initialValues={{
-            "name": fields.find(value => value?.value != null)?.value,
-            "email": fields.find(value => value?.value != null)?.value,
+            "name": fields.find(value => value?.value != null && value?.name == "name")?.value,
+            "email": fields.find(value => value?.value != null && value?.name == "email")?.value,
             "old_password": "",
             "new_password": "",
             "confirm_password": "",
