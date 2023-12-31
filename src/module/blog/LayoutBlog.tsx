@@ -1,6 +1,6 @@
 import { Blog } from ".."
-import LeftBlog from "./leftblog/LeftBlog"
-import RightBlog from "./rightblog/RightBlog"
+import LeftBlog from "./components/leftblog/LeftBlog"
+import RightBlog from "./components/rightblog/RightBlog"
 import styles from "./style.module.scss"
 
 

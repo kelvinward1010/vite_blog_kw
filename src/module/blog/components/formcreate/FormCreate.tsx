@@ -4,9 +4,9 @@ import styles from "./style.module.scss";
 import { CheckCircleOutlined, UserOutlined, WarningOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { storageService } from "../../../../utils/storage";
-import { createBlogService } from "../../api/create_blog";
+import { createBlogService } from "../../../../apis/api_post/create_blog";
 import { useRecoilState } from "recoil";
-import { refeshBlogState } from "../../state/atom";
+import { refeshBlogState } from "../../../../store/state/atom";
 
 const { TextArea } = Input;
 const { Text } = Typography;

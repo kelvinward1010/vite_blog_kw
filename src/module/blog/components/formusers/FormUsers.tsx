@@ -2,7 +2,7 @@ import { Avatar, Typography } from "antd"
 import styles from "./style.module.scss"
 import { UserOutlined } from "@ant-design/icons"
 import { useEffect, useState } from "react";
-import { searchUsersService } from "../../api/search_users";
+import { searchUsersService } from "../../../../apis/api_user/search_users";
 import { useNavigate } from "react-router-dom";
 
 const { Text, Title } = Typography;
