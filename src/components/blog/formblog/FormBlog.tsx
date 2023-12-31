@@ -157,7 +157,7 @@ function FormBlog(props: Props) {
                     </div>
                     <div className={styles.content} onClick={() => setOpenWatchBlog(true)}>
                         <Title className={styles.title} level={4}>{props.blog?.title}</Title>
-                        <Text className={styles.content}>{props.blog?.content}</Text>
+                        <Text className={styles.content_detail}>{props.blog?.content}</Text>
                     </div>
                     <div className={styles.footer}>
                         <div className={styles.like}>

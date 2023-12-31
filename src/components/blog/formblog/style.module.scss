@@ -45,6 +45,13 @@
             padding: 5px;
             border-radius: 3px;
             cursor: pointer;
+            
+            .content_detail{
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
         }
 
         .footer{
