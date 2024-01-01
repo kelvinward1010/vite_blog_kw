@@ -2,7 +2,7 @@ import Infoconversation from "./infoconversation/Infoconversation";
 import LayoutMessage from "./layoutmessage/LayoutMessage";
 import styles from "./style.module.scss";
 
-function LayoutMain() {
+export function Conversation() {
     return (
         <div className={styles.container}>
             <div className={styles.right_converss}>
@@ -14,5 +14,3 @@ function LayoutMain() {
         </div>
     )
 }
-
-export default LayoutMain

@@ -8,7 +8,10 @@ function Footer() {
             <Row justify={'space-between'} align={'middle'} className={styles.main_send} >
                 <Col push={1} span={24}>
                     <Space.Compact style={{ width: '90%' }}>
-                        <Input placeholder="Write your message"/>
+                        <Input 
+                            placeholder="Write your message" 
+                            onClickCapture={() => console.log("endter")}
+                        />
                         <Button className={styles.button_send} icon={<SendOutlined />}>Send</Button>
                     </Space.Compact>
                 </Col>

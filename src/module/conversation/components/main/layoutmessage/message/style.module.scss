@@ -1,4 +1,7 @@
-.container{
+.container_messages{
     width: 100%;
     height: calc(100vh - 155px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: rgb(59, 59, 59);
 }

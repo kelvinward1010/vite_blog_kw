@@ -1,0 +1,43 @@
+.containerleft{
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
+
+    .avatar{
+        margin-left: 10px;
+        min-width: 32px;
+        min-height: 32px;
+    }
+    
+    .name{
+        margin-left: 10px;
+        background:rgb(113, 112, 112);
+        padding: 4px 7px;
+        border-radius: 10px;
+        color: white;
+    } 
+}
+
+.containerright{
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+    .avatar{
+        margin-right: 10px;
+        min-width: 32px;
+        min-height: 32px;
+    }
+
+    .name{
+        margin-right: 10px;
+        background: #3578E5;
+        padding: 4px 7px;
+        border-radius: 10px;
+        color: white;
+    } 
+}

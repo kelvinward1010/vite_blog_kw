@@ -16,4 +16,10 @@
         margin-left: 5px;
         color: white;
     }
+
+    @media screen and (max-width: 600px) {
+        .name{
+            display: none !important;
+        }
+    }
 }

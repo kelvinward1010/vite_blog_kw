@@ -1,18 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import { blogUrl, conversationUrl, homeUrl, introducedUrl, profileUrl, signinUrl, signupUrl } from "./urls";
+import { blogUrl, conversationIdUrl, conversationUrl, homeUrl, introducedUrl, profileUrl, signinUrl, signupUrl } from "./urls";
 import { 
     Introduce,
     Signin, 
     Signup, 
     Welcome,
     LayoutBlog,
-    Profile
+    Profile,
+    LayoutConversation,
+    Conversation,
+    LayoutNoneChoose
 } from "./module";
 import { 
     Error, 
     Layout
 } from "./components";
-import { Conversation } from "./module/conversation/Conversation";
 
 
 
@@ -37,7 +39,19 @@ export const routerConfig = createBrowserRouter([
             {
                 path: conversationUrl,
                 errorElement: <Error />,
-                element: <Conversation />
+                element: <LayoutConversation />,
+                children: [
+                    {
+                        path: conversationUrl,
+                        errorElement: <Error />,
+                        element: <LayoutNoneChoose />,
+                    },
+                    {
+                        path: conversationIdUrl,
+                        errorElement: <Error />,
+                        element: <Conversation />,
+                    }
+                ]
             },
             {
                 path: profileUrl,
