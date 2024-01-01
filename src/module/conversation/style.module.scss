@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    height: calc(100vh - 55px);
+    display: flex;
+    overflow: hidden;
+
+    .left{
+        width: 20%;
+    }
+
+    .right{
+        width: 80%;
+    }
+}

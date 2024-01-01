@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    height: 50px;
+    background: rgb(59, 59, 59);
+
+    .main_send{
+        height: 100%;
+
+        .button_send{
+            background: teal;
+            color: white;
+        }
+    }
+}

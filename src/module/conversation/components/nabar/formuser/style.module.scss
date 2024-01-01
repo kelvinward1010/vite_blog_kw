@@ -1,0 +1,19 @@
+.conatiner{
+    width: 90%;
+    height: 40px;
+    background: teal;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+
+    .avatar{
+        margin-left: 5px;
+    }
+
+    .name{
+        margin-left: 5px;
+        color: white;
+    }
+}
