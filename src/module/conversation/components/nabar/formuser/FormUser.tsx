@@ -14,12 +14,10 @@ function FormUser(props: Props) {
     const nagative = useNavigate();
     const current_user = storageService.getStorage().current_user;
     const handleConfigData = () => {
-        let user = null;
-
         if(props?.conversation?.user_1?.id == current_user?.id){
-            return user = props.conversation?.user_2;
+            return props.conversation?.user_2;
         }else if(props?.conversation?.user_2?.id == current_user?.id){
-            return user = props.conversation?.user_1;
+            return props.conversation?.user_1;
         }
     }
 
