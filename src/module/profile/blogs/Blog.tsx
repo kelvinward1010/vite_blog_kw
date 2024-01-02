@@ -9,8 +9,10 @@ import { Avatar, Button, Image, Typography, notification } from "antd";
 import { CheckCircleOutlined, MessageOutlined, UserAddOutlined, WarningOutlined } from "@ant-design/icons";
 import HinhNenProfileDefault from "../../../assets/image/hinh-nen-profile-default.jpg";
 import ReactLogo from "../../../assets/image/react_logo.png";
-import { useLocation } from "react-router-dom";
 import { useCreateConversationService } from "../../../apis/conversations/create_conversation";
+import { useGetConversationsService } from "../../../apis/conversations/get_conversation_token";
+import { storageService } from "../../../utils/storage";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
@@ -21,11 +23,12 @@ interface Props{
 
 function Blog(props: Props) {
 
+    const negative = useNavigate();
     const [data, setData] = useState<any[]>([]);
+    const [dataConverss, setDataConverss] = useState<any[]>([]);
     const isRefeshBlog = useRecoilValue(refeshBlog);
     const [, setIsRefesh] = useRecoilState(refeshBlogState);
-    const location = useLocation().pathname;
-    const id_profile = location.split("/")[3];
+    const current_user = storageService.getStorage().current_user;
     
     useEffect(() => {
         usePostsUserService({ id: props?.user_id as string}).then((res) => setData(res?.data));
@@ -40,27 +43,47 @@ function Blog(props: Props) {
 
     const configdata = data?.reverse();
 
-    const handleCreateAndGoConversation = () => {
-        const data = {
-            userId_1: id_profile,
-        }
+    useEffect(() =>{
+        useGetConversationsService().then((res) => setDataConverss(res?.data));
+    },[])
 
-        useCreateConversationService(data).then(() => {
-            notification.success({
-                message: "You have been create conversation successfully!",
-                icon: (
-                    <CheckCircleOutlined className="done" />
-                )
+    // const handleConfigCreateAndGoConversation = () => {
+    //     for (const i in dataConverss){
+    //         if( )
+    //     }
+    // }
+    const checkrange = []
+    for (const i in dataConverss){
+        if(dataConverss[i]?.user_1?.id == props.user_id && dataConverss[i]?.user_2?.id == current_user?.id || dataConverss[i]?.user_1?.id == current_user?.id && dataConverss[i]?.user_2?.id == props.user_id){
+            checkrange.push(dataConverss[i])
+        }
+    }
+
+    const handleCreateAndGoConversation = () => {
+        if(checkrange?.length != 0){
+            negative(`/home/conversation/${props.user_id}`)
+        }else{
+            const data = {
+                userId_1: props.user_id,
+            }
+
+            useCreateConversationService(data).then(() => {
+                notification.success({
+                    message: "You have been create conversation successfully!",
+                    icon: (
+                        <CheckCircleOutlined className="done" />
+                    )
+                })
+            }).catch((res) => {
+                notification.error({
+                    message: `Could not create conversation. Please try again!`,
+                    description: ` ${res?.response?.data?.detail}`,
+                    icon: (
+                        <WarningOutlined className='warning' />
+                    )
+                })
             })
-        }).catch((res) => {
-            notification.error({
-                message: `Could not create conversation. Please try again!`,
-                description: ` ${res?.response?.data?.detail}`,
-                icon: (
-                    <WarningOutlined className='warning' />
-                )
-            })
-        })
+        }
     }
 
     return (

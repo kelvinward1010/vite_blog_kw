@@ -38,6 +38,7 @@ function Footer(props: Props) {
         })
     }
 
+
     return (
         <div className={styles.container}>
             <Row justify={'space-between'} align={'middle'} className={styles.main_send} >
@@ -46,6 +47,7 @@ function Footer(props: Props) {
                         <Input 
                             placeholder="Write your message" 
                             onChange={(e: any) => setContent(e.currentTarget.value)}
+                            id="input_content"
                         />
                         <Button onClick={handleSendMessage} className={styles.button_send} icon={<SendOutlined />}>Send</Button>
                     </Space.Compact>
