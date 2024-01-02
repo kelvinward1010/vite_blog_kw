@@ -4,12 +4,17 @@ import { UserOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
-function Head() {
+interface Props{
+    user?: any;
+}
+
+function Head(props: Props) {
+    
     return (
         <div className={styles.container}>
             <div className={styles.center}>
                 <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                <Text className={styles.name}>Kelvin Ward</Text>
+                <Text className={styles.name}>{props?.user?.name}</Text>
             </div>
         </div>
     )

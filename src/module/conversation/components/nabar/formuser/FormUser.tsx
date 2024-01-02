@@ -3,6 +3,7 @@ import styles from "./style.module.scss";
 import { UserOutlined } from "@ant-design/icons";
 import { storageService } from "../../../../../utils/storage";
 import { useNavigate } from "react-router-dom";
+import { handleConfigDataUserConversation } from "../../../config";
 
 const { Text } = Typography;
 
@@ -13,15 +14,8 @@ interface Props {
 function FormUser(props: Props) {
     const nagative = useNavigate();
     const current_user = storageService.getStorage().current_user;
-    const handleConfigData = () => {
-        if(props?.conversation?.user_1?.id == current_user?.id){
-            return props.conversation?.user_2;
-        }else if(props?.conversation?.user_2?.id == current_user?.id){
-            return props.conversation?.user_1;
-        }
-    }
 
-    const dataUser = handleConfigData();
+    const dataUser = handleConfigDataUserConversation(props?.conversation, current_user);
     const handleGoInConversation = () => nagative(`${props?.conversation?.id}`);
 
     return (

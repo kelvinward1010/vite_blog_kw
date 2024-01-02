@@ -1,8 +1,43 @@
-import { Button, Col, Input, Row, Space } from "antd"
+import { Button, Col, Input, Row, Space, notification } from "antd"
 import styles from "./style.module.scss"
-import { SendOutlined } from "@ant-design/icons"
+import { CheckCircleOutlined, SendOutlined, WarningOutlined } from "@ant-design/icons"
+import { useState } from "react"
+import { useCreateMessageService } from "../../../../../../apis/messages/create_message";
 
-function Footer() {
+interface Props{
+    conversation?: any;
+    onSubmit?: any;
+    setRefeshData?: any;
+}
+
+function Footer(props: Props) {
+
+    const [content, setContent] = useState('');
+
+    const handleSendMessage = () => {
+        const data = {
+            content: content,
+        }
+
+        useCreateMessageService(props?.conversation?.id, data).then(() => {
+            notification.success({
+                message: "You have been create message successfully!",
+                icon: (
+                    <CheckCircleOutlined className="done" />
+                )
+            })
+            props.setRefeshData(true)
+        }).catch((res) => {
+            notification.error({
+                message: `Could not create message. Please try again!`,
+                description: ` ${res?.response?.data?.detail}`,
+                icon: (
+                    <WarningOutlined className='warning' />
+                )
+            })
+        })
+    }
+
     return (
         <div className={styles.container}>
             <Row justify={'space-between'} align={'middle'} className={styles.main_send} >
@@ -10,9 +45,9 @@ function Footer() {
                     <Space.Compact style={{ width: '90%' }}>
                         <Input 
                             placeholder="Write your message" 
-                            onClickCapture={() => console.log("endter")}
+                            onChange={(e: any) => setContent(e.currentTarget.value)}
                         />
-                        <Button className={styles.button_send} icon={<SendOutlined />}>Send</Button>
+                        <Button onClick={handleSendMessage} className={styles.button_send} icon={<SendOutlined />}>Send</Button>
                     </Space.Compact>
                 </Col>
             </Row>

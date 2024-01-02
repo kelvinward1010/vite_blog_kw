@@ -2,9 +2,6 @@ import { BASE_URL } from "../../constant/config";
 import { apiClient } from "../../lib/api";
 
 
-
-
-
 interface Props {
     title: string;
     content: string;

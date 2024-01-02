@@ -4,13 +4,18 @@ import { UserOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
-function Infoconversation() {
+interface Props {
+    dataUser?: any;
+}
+
+function Infoconversation(props: Props) {
+    const data = props.dataUser;
     return (
         <div className={styles.container}>
             <div className={styles.top}>
                 <div className={styles.info}>
                     <Avatar className={styles.avatar} icon={<UserOutlined />} />
-                    <Text className={styles.name}>Kelvin Ward</Text>
+                    <Text className={styles.name}>{data?.name}</Text>
                 </div>
                 <div className={styles.goto_profile}>
                     <Text className={styles.fersonal_page_text}>Personal page</Text>
