@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import FormUser from "./formuser/FormUser";
 import styles from "./style.module.scss";
 import { useGetConversationsService } from "../../../../apis/conversations/get_conversation_token";
-import { Spin } from "antd";
 
 function Navbar() {
     const [data, setData] = useState<any[]>([]);
@@ -14,7 +13,6 @@ function Navbar() {
 
     return (
         <div className={styles.container}>
-            {data?.length == 0 ? <Spin fullscreen /> : null}
             <div className={styles.users}>
                 {data.map((conversation: any) => (
                     <FormUser key={conversation?.id} conversation={conversation}/>
