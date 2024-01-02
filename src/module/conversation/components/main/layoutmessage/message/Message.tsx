@@ -1,18 +1,22 @@
+import { Typography } from "antd";
 import MessageLeftItem from "./messageitem/MessageLeftItem";
 import MessageRightItem from "./messageitem/MessageRightItem";
 import styles from "./style.module.scss";
+import { handleConfigDataUserConversation } from "../../../../config";
 
 interface Props {
     conversation?: any;
     current_user?: any;
 }
 
+const { Title } = Typography;
+
 
 function Message(props: Props){
 
     const messages = props.conversation?.messages;
     const user_watch = props.current_user;
-    // const dataUser = handleConfigDataUserConversation(props.conversation, user_watch);
+    const dataUser = handleConfigDataUserConversation(props.conversation, user_watch);
     
     return (
         <div className={styles.container_messages}>
@@ -38,6 +42,9 @@ function Message(props: Props){
                         </div>
                     )
                 })}
+                {messages?.length == 0 && <div className={styles.nonemessage}>
+                    <Title level={4} className={styles.title_nonemessage}>Send a first message to talk with {dataUser?.name}</Title>
+                </div>}
             </div>
         </div>
     )

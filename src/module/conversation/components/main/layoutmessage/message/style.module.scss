@@ -4,4 +4,17 @@
     overflow-x: hidden;
     overflow-y: scroll;
     background: rgb(59, 59, 59);
+
+    .nonemessage{
+        width: 100%;
+        height: calc(100vh - 155px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .title_nonemessage{
+            color: white;
+        }
+    }
 }

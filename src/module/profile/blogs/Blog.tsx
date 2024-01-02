@@ -5,10 +5,12 @@ import { refeshBlog } from "../../../store/state/state";
 import { refeshBlogState } from "../../../store/state/atom";
 import { usePostsUserService } from "../../../apis/api_post/get_posts_user";
 import FormBlog from "../../../components/blog/formblog/FormBlog";
-import { Avatar, Button, Image, Typography } from "antd";
-import { MessageOutlined, UserAddOutlined } from "@ant-design/icons";
+import { Avatar, Button, Image, Typography, notification } from "antd";
+import { CheckCircleOutlined, MessageOutlined, UserAddOutlined, WarningOutlined } from "@ant-design/icons";
 import HinhNenProfileDefault from "../../../assets/image/hinh-nen-profile-default.jpg";
 import ReactLogo from "../../../assets/image/react_logo.png";
+import { useLocation } from "react-router-dom";
+import { useCreateConversationService } from "../../../apis/conversations/create_conversation";
 
 const { Title } = Typography;
 
@@ -22,7 +24,9 @@ function Blog(props: Props) {
     const [data, setData] = useState<any[]>([]);
     const isRefeshBlog = useRecoilValue(refeshBlog);
     const [, setIsRefesh] = useRecoilState(refeshBlogState);
-
+    const location = useLocation().pathname;
+    const id_profile = location.split("/")[3];
+    
     useEffect(() => {
         usePostsUserService({ id: props?.user_id as string}).then((res) => setData(res?.data));
     },[])
@@ -35,6 +39,29 @@ function Blog(props: Props) {
     },[isRefeshBlog == true])
 
     const configdata = data?.reverse();
+
+    const handleCreateAndGoConversation = () => {
+        const data = {
+            userId_1: id_profile,
+        }
+
+        useCreateConversationService(data).then(() => {
+            notification.success({
+                message: "You have been create conversation successfully!",
+                icon: (
+                    <CheckCircleOutlined className="done" />
+                )
+            })
+        }).catch((res) => {
+            notification.error({
+                message: `Could not create conversation. Please try again!`,
+                description: ` ${res?.response?.data?.detail}`,
+                icon: (
+                    <WarningOutlined className='warning' />
+                )
+            })
+        })
+    }
 
     return (
         <div className={styles.container}>
@@ -53,7 +80,7 @@ function Blog(props: Props) {
                         <Title level={4}>{props.user?.name}</Title>
                     </div>
                     <div className={styles.head_info_actions}>
-                        <Button icon={<MessageOutlined />} className={styles.button}>Message</Button>
+                        <Button onClick={handleCreateAndGoConversation} icon={<MessageOutlined />} className={styles.button}>Message</Button>
                         <Button icon={<UserAddOutlined />} className={styles.button}>Follow</Button>
                     </div>
                 </div>
