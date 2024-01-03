@@ -55,7 +55,6 @@ function FormBlog(props: Props) {
     }
 
     const data_likes: any[] = props.blog?.likes;
-
     const check_like = data_likes.find(item => String(item) == String(current_user?.id))
     
     useEffect(() => {
@@ -137,6 +136,8 @@ function FormBlog(props: Props) {
                 isOpen={openWatchBlog}
                 setIsOpen={setOpenWatchBlog}
                 blog={props.blog}
+                onLikeFunction={handleLikeBlog}
+                checkliked={check_like}
             />
             <div className={styles.container}>
                 <div className={styles.center}>

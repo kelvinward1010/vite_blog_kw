@@ -1,7 +1,7 @@
 
 import { Avatar, Modal, Typography } from "antd";
 import styles from "./style.module.scss";
-import { LikeOutlined, MessageOutlined, UserOutlined } from "@ant-design/icons";
+import { LikeFilled, LikeOutlined, MessageOutlined, UserOutlined } from "@ant-design/icons";
 import FormCreateComment from "../comment/formcreatecomment/FormCreateComment";
 import FormComment from "../comment/formcomment/FormComment";
 
@@ -12,6 +12,8 @@ interface Props{
     isOpen?: boolean;
     setIsOpen?: any;
     blog?: any;
+    onLikeFunction?: () => void;
+    checkliked?: any;
 }
 
 function FormWatch(props: Props) {
@@ -30,6 +32,8 @@ function FormWatch(props: Props) {
     }
 
     const comments: any[] = props?.blog?.comments?.reverse()
+    const length_comment = props?.blog?.comments?.length;
+    const length_like = props.blog?.likes?.length;
 
     return (
         <Modal
@@ -49,12 +53,15 @@ function FormWatch(props: Props) {
                     <div className={styles.footer}>
                         <div className={styles.footer_action}>
                             <div className={styles.like}>
-                                <LikeOutlined />
-                                <Text className={styles.titleLike}>Like</Text>
+                                {!props.checkliked ? 
+                                    <LikeOutlined className={styles.iconlike} onClick={props.onLikeFunction}/> :
+                                    <LikeFilled className={styles.iconlike} onClick={props.onLikeFunction}/>
+                                }
+                                <Text className={styles.titleLike}>Like ({length_like})</Text>
                             </div>
                             <div className={styles.comment}>
                                 <MessageOutlined />
-                                <Text className={styles.titleComment}>Comment</Text>
+                                <Text className={styles.titleComment}>Comment ({length_comment})</Text>
                             </div>
                         </div>
                         <div className={styles.content_comment}>
