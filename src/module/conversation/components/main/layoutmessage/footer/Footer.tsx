@@ -1,8 +1,9 @@
-import { Button, Col, Input, Row, Space, notification } from "antd"
+import { Col, Row, Space, notification } from "antd"
 import styles from "./style.module.scss"
-import { CheckCircleOutlined, SendOutlined, WarningOutlined } from "@ant-design/icons"
+import { CheckCircleOutlined, WarningOutlined } from "@ant-design/icons"
 import { useState } from "react"
 import { useCreateMessageService } from "../../../../../../apis/messages/create_message";
+import InputEmojiWithRef from "react-input-emoji";
 
 interface Props{
     conversation?: any;
@@ -44,12 +45,13 @@ function Footer(props: Props) {
             <Row justify={'space-between'} align={'middle'} className={styles.main_send} >
                 <Col push={1} span={24}>
                     <Space.Compact style={{ width: '90%' }}>
-                        <Input 
-                            placeholder="Write your message" 
-                            onChange={(e: any) => setContent(e.currentTarget.value)}
-                            id="input_content"
+                        <InputEmojiWithRef
+                            value={content}
+                            onChange={setContent}
+                            cleanOnEnter
+                            onEnter={handleSendMessage}
+                            placeholder="Type your message"
                         />
-                        <Button onClick={handleSendMessage} className={styles.button_send} icon={<SendOutlined />}>Send</Button>
                     </Space.Compact>
                 </Col>
             </Row>
